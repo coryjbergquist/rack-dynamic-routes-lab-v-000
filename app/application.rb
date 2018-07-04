@@ -6,12 +6,11 @@ class Application
     req = Rack::Request.new(env)
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-      binding.pry
-      if Item.all.include?(item_name)
+      Item.all.map do |item_object|
+        if item_object.name == item_name
+          resp.write "#{item_object.price}"
       end
-
-      resp.write "You requested the songs"
-      #env["PATH_INFO"]
+      
     else
       resp.write "Route not found"
       resp.status = 404
