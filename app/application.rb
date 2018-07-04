@@ -8,6 +8,7 @@ class Application
       item_name = req.path.split("/items/").last
       if @@all.include?(item_name)
         binding.pry
+      end
 
       resp.write "You requested the songs"
       #env["PATH_INFO"]
