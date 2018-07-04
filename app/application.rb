@@ -9,7 +9,12 @@ class Application
       items = Item.all.map do |item_object|
         item_object.name
       end
-      
+      if items.include?(item_name)
+        price = Item.all.each do |item_object|
+          if item_object.name == item_name
+            item_object.price
+          end
+          price
       Item.all.map do |item_object|
         if item_object.name == item_name
           resp.write "#{item_object.price}"
