@@ -14,11 +14,15 @@ class Application
           if item_object.name == item_name
             item_object.price
           end
+        end
           price
-      Item.all.map do |item_object|
-        if item_object.name == item_name
-          resp.write "#{item_object.price}"
-        else
+        else 
+          resp.write "Item not found"
+          resp.status = 400
+      # Item.all.map do |item_object|
+      #   if item_object.name == item_name
+      #     resp.write "#{item_object.price}"
+      #   else
           binding.pry
           # resp.write "Item not found"
           # resp.status = 400
