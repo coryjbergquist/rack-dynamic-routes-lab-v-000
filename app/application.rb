@@ -8,7 +8,6 @@ class Application
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
       @@items.map do |item_object|
-        binding.pry
         if item_object.name == item_name
           resp.write "#{item_object.price}"
         else
