@@ -6,27 +6,14 @@ class Application
     req = Rack::Request.new(env)
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-      items = Item.all.map do |item_object|
-        item_object.name
-      end
-      if items.include?(item_name)
-        price = Item.all.each do |item_object|
-          if item_object.name == item_name
-            item_object.price
-          end
-        end
-          price
+      Item.all.map do |item_object|
+        if item_object.name == item_name
+          resp.write "#{item_object.price}"
         else
           resp.write "Item not found"
           resp.status = 400
-      # Item.all.map do |item_object|
-      #   if item_object.name == item_name
-      #     resp.write "#{item_object.price}"
-      #   else
-          binding.pry
-          # resp.write "Item not found"
-          # resp.status = 400
         end
+      end
     else
       resp.write "Route not found"
       resp.status = 404
