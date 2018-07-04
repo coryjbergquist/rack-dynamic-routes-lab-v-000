@@ -9,6 +9,7 @@ class Application
       Item.all.map do |item_object|
         if item_object.name == item_name
           resp.write "#{item_object.price}"
+          resp.status = 200
         else
           resp.write "Item not found"
           resp.status = 400
