@@ -12,6 +12,7 @@ class Application
           resp.status = 400
         else
           resp.write "#{item_object.price}"
+          resp.status = 200
         end
       end
     else
