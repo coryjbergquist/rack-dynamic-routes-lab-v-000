@@ -16,7 +16,7 @@ class Application
           end
         end
           price
-        else 
+        else
           resp.write "Item not found"
           resp.status = 400
       # Item.all.map do |item_object|
