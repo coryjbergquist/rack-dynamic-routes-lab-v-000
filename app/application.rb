@@ -8,7 +8,6 @@ class Application
       item_name = req.path.split("/items/").last
       binding.pry
       if Item.all.include?(item_name)
-        binding.pry
       end
 
       resp.write "You requested the songs"
