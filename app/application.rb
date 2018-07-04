@@ -9,14 +9,12 @@ class Application
       Item.all.map do |item_object|
         if item_object.name == item_name
           resp.write "#{item_object.price}"
-      end
-      
+        end
     else
       resp.write "Route not found"
       resp.status = 404
-    end
-
-    resp.finish
+      end
+    esp.finish
   end
 
 end
