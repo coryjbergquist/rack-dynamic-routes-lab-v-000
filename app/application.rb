@@ -4,7 +4,8 @@ class Application
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
-    if req.path.match(/items/<ITEM NAME>)
+    if req.path.match(/items/)
+      binding.pry
       resp.write "You requested the songs"
       #env["PATH_INFO"]
     else
