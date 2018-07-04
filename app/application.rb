@@ -7,9 +7,10 @@ class Application
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
       Item.all.map do |item_object|
+        binding.pry
         if item_object.name == item_name
           resp.write "#{item_object.price}"
-        elsif item_object.name != item_name
+        else
           resp.write "Item not found"
           resp.status = 400
         end
