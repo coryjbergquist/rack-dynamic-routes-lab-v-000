@@ -1,12 +1,14 @@
 require 'pry'
 class Application
 
+  @@item = Item.all
+
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
     if req.path.match(/items/)
       item_name = req.path.split("/items/").last
-      Item.all.map do |item_object|
+      @@item.map do |item_object|
         if item_object.name == item_name
           resp.write "#{item_object.price}"
        else
@@ -17,7 +19,7 @@ class Application
     else
       resp.write "Route not found"
       resp.status = 404
-      end
+   end
     resp.finish
   end
 
