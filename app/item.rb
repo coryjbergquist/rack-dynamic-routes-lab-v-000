@@ -8,4 +8,9 @@ class Item
     @@all << self
   end
 
+  def self.all
+    @@all
+  end
+  
+
 end
